@@ -39,7 +39,4 @@ Ext.define('LoginDemo.view.user.UserDetails', {
     },  {
         text: 'Verify email address'
     }],
-    listeners: [{
-        afterRender: 'onFormLoad'
-    }]
 });
