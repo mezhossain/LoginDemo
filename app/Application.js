@@ -42,9 +42,6 @@ Ext.define('LoginDemo.Application', {
 				xtype: 'login'
 			});
 		}
-
-		var currentUser;
-		loggedInAdmin = localStorage.getItem('CurrentUser');
 	
 	},
 

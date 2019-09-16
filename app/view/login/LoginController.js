@@ -30,7 +30,6 @@ Ext.define('LoginDemo.view.login.LoginController', {
 						if (obj[n].role == 'admin') {
 							if (rem == true) {
 								localStorage.setItem('LoggedInAdmin', true);
-								localStorage.setItem('CurrentUser', obj[n].username)
 							}
 							win.destroy();
 							Ext.create({
@@ -44,7 +43,6 @@ Ext.define('LoginDemo.view.login.LoginController', {
 						} else if (obj[n].role == 'user') {
 							if (rem == true) {
 								localStorage.setItem('LoggedInUser', true);
-								localStorage.setItem('CurrentUser', obj[n].username)
 							}
 							win.destroy();
 							Ext.Msg.alert(
