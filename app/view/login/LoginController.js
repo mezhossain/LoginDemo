@@ -1,6 +1,7 @@
 Ext.define('LoginDemo.view.login.LoginController', {
 	extend: 'Ext.app.ViewController',
 	alias: 'controller.login',
+	requires: [ 'LoginDemo.model.User' ],
 
 	onLoginClick: function() {
 
@@ -29,6 +30,7 @@ Ext.define('LoginDemo.view.login.LoginController', {
 						if (obj[n].role == 'admin') {
 							if (rem == true) {
 								localStorage.setItem('LoggedInAdmin', true);
+								localStorage.setItem('CurrentUser', obj[n].username)
 							}
 							win.destroy();
 							Ext.create({
@@ -42,9 +44,9 @@ Ext.define('LoginDemo.view.login.LoginController', {
 						} else if (obj[n].role == 'user') {
 							if (rem == true) {
 								localStorage.setItem('LoggedInUser', true);
+								localStorage.setItem('CurrentUser', obj[n].username)
 							}
 							win.destroy();
-							var userview = Ext.create('LoginDemo.view.user.UserView');
 							Ext.Msg.alert(
 								"Login Successful",
 								"Welcome to your user dashboard"
@@ -60,7 +62,10 @@ Ext.define('LoginDemo.view.login.LoginController', {
 				}
 			},
 			failure: function () {
-				console.log("Failed");
+				Ext.Msg.alert(
+					'Error',
+					'Unable to connect to server. Please try again later.',
+				);
 			}
 		});
 	},

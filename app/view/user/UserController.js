@@ -54,8 +54,50 @@ Ext.define('LoginDemo.view.user.UserController', {
 				}
 			},
 			failure: function () {
-				console.log("Failed");
+				Ext.Msg.alert(
+					'Error',
+					'Unable to connect to server. Please try again later.',
+				);
 			}
 		})
-	}
+	},
+
+	// onFormLoad: function () {
+	// 	var me = this;
+	// 	var user = localStorage.getItem('CurrentUser');
+	// 	Ext.Ajax.request({
+	// 		url: 'cred.json',
+	// 		method: 'POST',
+	// 		jsonData: true,
+	// 		setUseDefaultXhrHeader: false,
+	// 		withCredentials: true,
+	// 		params: {
+	// 			username: user
+	// 		},
+	// 		scope: this,
+	// 		success: function (response) {
+	// 			var obj = Ext.decode(response.responseText);
+	// 			for(var n = 0; n < obj.length; n++) {
+	// 				if (obj[n].username == user) {
+	// 					console.log(obj[n]);
+	// 					me.lookupReference('givenname').setValue(obj[n].name);
+	// 					me.lookupReference('username').setValue(obj[n].username);
+	// 					me.lookupReference('userpass').setValue(obj[n].password);
+	// 					break;
+	// 				} else {
+	// 					Ext.Msg.alert(
+	// 						'Error',
+	// 						'Details could not be loaded.',
+	// 					);
+	// 				}
+	// 			}
+	// 		},
+	// 		failure: function () {
+	// 			Ext.Msg.alert(
+	// 				'Error',
+	// 				'Unable to connect to server. Please try again later.',
+	// 			);
+	// 		}
+	// 	})
+	// }
 });

@@ -1,8 +1,10 @@
+
 Ext.define('LoginDemo.view.user.UserDetails', {
     extend: 'Ext.form.Panel',
     xtype: 'userdetails',
     title: 'User Settings',
     controller: 'user',
+    viewModel: 'user',
     bodyPadding: '20',
     fieldDefaults: {
         msgTarget: 'side',
@@ -36,5 +38,8 @@ Ext.define('LoginDemo.view.user.UserDetails', {
         handler: 'onPasswordReset',
     },  {
         text: 'Verify email address'
+    }],
+    listeners: [{
+        afterRender: 'onFormLoad'
     }]
 });

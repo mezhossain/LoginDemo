@@ -42,9 +42,10 @@ Ext.define('LoginDemo.Application', {
 				xtype: 'login'
 			});
 		}
-		// Ext.create({
-		// 	xtype: loggedInAdmin ? 'app-main' : 'login'
-		// });
+
+		var currentUser;
+		loggedInAdmin = localStorage.getItem('CurrentUser');
+	
 	},
 
 	onAppUpdate: function () {

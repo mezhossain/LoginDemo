@@ -24,6 +24,8 @@ Ext.define('LoginDemo.view.main.MainController', {
         localStorage.removeItem('LoggedInAdmin');
         localStorage.removeItem('LoggedInUser');
 
+        localStorage.removeItem('CurrentUser');
+
         // Remove Main View
         this.getView().destroy();
 

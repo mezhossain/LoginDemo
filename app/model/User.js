@@ -1,8 +1,10 @@
 Ext.define('LoginDemo.model.User', {
+	extend: 'Ext.data.Model',
 	// config: {
-	// 	firstName: '',
-	// 	lastName: '',
-	// 	roles: []
+	// 	username: '',
+	// 	password: '',
+	// 	name: '',
+	// 	role: ''
 	// },
 	 
 	// isUserInRole: function(roles) {
@@ -14,11 +16,7 @@ Ext.define('LoginDemo.model.User', {
 	// 	return false;
 	// },
 	 
-	// constructor: function(config) {
-	// 	this.initConfig(config);
-	// 	this.callParent(arguments);
-	// }
-	extend: 'Ext.data.Model',
+	
     fields: [{
         name: 'username',
         type: 'string'
@@ -31,5 +29,9 @@ Ext.define('LoginDemo.model.User', {
     }, {  
         name: 'role',
         type: 'string' 
-    }],
+	}],
+	// constructor: function(config) {
+	// 	this.initConfig(config);
+	// 	this.callParent(arguments);
+	// }
 })

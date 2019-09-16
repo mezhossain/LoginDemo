@@ -924,6 +924,7 @@ $include-logindemo-view-registration-registrationcontroller: dynamic(true);;
 $include-logindemo-view-user-usercontroller: dynamic(true);;
 $include-logindemo-view-user-userdetails: dynamic(true);;
 $include-logindemo-view-user-userview: dynamic(true);;
+$include-logindemo-view-user-userviewmodel: dynamic(true);;
 $output-paths: ("path": "../../classic/resources", "shared": "../../resources");
 
 /* ======================== ETC ======================== */
