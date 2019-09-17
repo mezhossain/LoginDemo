@@ -12,7 +12,6 @@ Ext.define('LoginDemo.view.user.UserView', {
 	],
 
 	controller: 'main',
-	viewModel: 'main',
 	plugins: 'viewport',
 
 	ui: 'navigation',

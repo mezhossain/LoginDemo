@@ -1,21 +1,5 @@
 Ext.define('LoginDemo.model.User', {
 	extend: 'Ext.data.Model',
-	// config: {
-	// 	username: '',
-	// 	password: '',
-	// 	name: '',
-	// 	role: ''
-	// },
-	 
-	// isUserInRole: function(roles) {
-	// 	for (var i=0; i<roles.length; i++) {
-	// 		if (Ext.Array.contains(this.getRoles(),roles[i])) {
-	// 		return true
-	// 		}
-	// 	}
-	// 	return false;
-	// },
-	 
 	
     fields: [{
         name: 'username',
@@ -29,9 +13,12 @@ Ext.define('LoginDemo.model.User', {
     }, {  
         name: 'role',
         type: 'string' 
+	}, {  
+        name: 'email',
+        type: 'string' 
+	}, {  
+        name: 'verified',
+		type: 'boolean' ,
+		defaultValue: false 
 	}],
-	// constructor: function(config) {
-	// 	this.initConfig(config);
-	// 	this.callParent(arguments);
-	// }
 })

@@ -3,18 +3,24 @@
         "username": "j.anderson",
         "password": "admin",
         "name": "James Anderson",
-        "role": "admin"
+        "role": "admin",
+        "email": "j.anderson@gmail.com",
+        "verified": true
     },
     {
         "username": "spaul",
         "password": "user1234",
         "name": "Sean Paul",
-        "role": "user"
+        "role": "user",
+        "email": "s.paul@gmail.com",
+        "verified": true
     },
     {
         "username": "bcranston",
         "password": "12345678",
         "name": "Bryan Cranston",
-        "role": "user"
+        "role": "user",
+        "email": "bryancranston@gmail.com",
+        "verified": false
     }
 ]

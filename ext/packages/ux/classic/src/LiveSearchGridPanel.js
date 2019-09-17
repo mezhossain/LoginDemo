@@ -62,7 +62,7 @@ Ext.define('Ext.ux.LiveSearchGridPanel', {
              xtype: 'textfield',
              name: 'searchField',
              hideLabel: true,
-             width: 200,
+             flex: 3,
              listeners: {
                  change: {
                      fn: me.onTextFieldChange,
@@ -82,23 +82,38 @@ Ext.define('Ext.ux.LiveSearchGridPanel', {
             tooltip: 'Find Next Row',
             handler: me.onNextClick,
             scope: me
-        }, '-', {
-            xtype: 'checkbox',
-            hideLabel: true,
-            margin: '0 0 0 4px',
-            handler: me.regExpToggle,
-            scope: me                
-        }, 'Regular expression', {
-            xtype: 'checkbox',
-            hideLabel: true,
-            margin: '0 0 0 4px',
-            handler: me.caseSensitiveToggle,
-            scope: me
-        }, 'Case sensitive'];
+        }];
+        // , '-', {
+        //     xtype: 'checkbox',
+        //     hideLabel: true,
+        //     margin: '0 0 0 4px',
+        //     handler: me.regExpToggle,
+        //     scope: me                
+        // }, 'Regular expression', {
+        //     xtype: 'checkbox',
+        //     hideLabel: true,
+        //     margin: '0 0 0 4px',
+        //     handler: me.caseSensitiveToggle,
+        //     scope: me
+        // }, 'Case sensitive'];
 
         me.bbar = new Ext.ux.StatusBar({
             defaultText: me.defaultStatusText,
             name: 'searchStatusBar'
+        },'->',{
+            xtype: 'button',
+            text: 'Delete user',
+            handler: 'deleteUser',
+            bind: {
+                disabled: '{!selectedJob}'
+            }   
+        },  {
+            xtype: 'button',
+            text: 'Update user',
+            handler: 'updateUser',
+            bind: {
+                disabled: '{!selectedJob}'
+            }   
         });
         
         me.callParent(arguments);

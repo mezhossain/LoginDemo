@@ -31,12 +31,27 @@ Ext.define('LoginDemo.view.user.UserDetails', {
             name: 'password',
             reference: 'userpass',
             allowBlank: false
+    },  {
+            xtype: 'textfield',
+            fieldLabel: 'Email',
+            inputType: 'email',
+            name: 'email',
+            reference: 'email',
+            allowBlank: false
+    },  {
+            xtype: 'displayfield',
+            fieldLabel: 'Verified account',
+            name: 'verified',
+            reference: 'verified',
+            allowBlank: false
     }],
     buttonAlign: 'center',
     buttons: [{
         text: 'Reset password',
         handler: 'onPasswordReset',
     },  {
-        text: 'Verify email address'
+        reference: 'verifiedButton',
+        text: 'Verify email address',
+        handler: 'onVerifyEmail'
     }],
 });

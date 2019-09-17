@@ -31,6 +31,7 @@ Ext.define('LoginDemo.view.login.LoginController', {
 							if (rem == true) {
 								localStorage.setItem('LoggedInAdmin', true);
 							}
+							localStorage.setItem('CurrentUser', obj[n].username);
 							win.destroy();
 							Ext.create({
 								xtype: 'app-main'
@@ -44,7 +45,12 @@ Ext.define('LoginDemo.view.login.LoginController', {
 							if (rem == true) {
 								localStorage.setItem('LoggedInUser', true);
 							}
+							localStorage.setItem('CurrentUser', obj[n].username);
+							
 							win.destroy();
+							Ext.create({
+								xtype: 'app-user'
+							});
 							Ext.Msg.alert(
 								"Login Successful",
 								"Welcome to your user dashboard"

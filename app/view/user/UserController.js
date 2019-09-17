@@ -62,42 +62,51 @@ Ext.define('LoginDemo.view.user.UserController', {
 		})
 	},
 
-	// onFormLoad: function () {
-	// 	var me = this;
-	// 	var user = localStorage.getItem('CurrentUser');
-	// 	Ext.Ajax.request({
-	// 		url: 'cred.json',
-	// 		method: 'POST',
-	// 		jsonData: true,
-	// 		setUseDefaultXhrHeader: false,
-	// 		withCredentials: true,
-	// 		params: {
-	// 			username: user
-	// 		},
-	// 		scope: this,
-	// 		success: function (response) {
-	// 			var obj = Ext.decode(response.responseText);
-	// 			for(var n = 0; n < obj.length; n++) {
-	// 				if (obj[n].username == user) {
-	// 					console.log(obj[n]);
-	// 					me.lookupReference('givenname').setValue(obj[n].name);
-	// 					me.lookupReference('username').setValue(obj[n].username);
-	// 					me.lookupReference('userpass').setValue(obj[n].password);
-	// 					break;
-	// 				} else {
-	// 					Ext.Msg.alert(
-	// 						'Error',
-	// 						'Details could not be loaded.',
-	// 					);
-	// 				}
-	// 			}
-	// 		},
-	// 		failure: function () {
-	// 			Ext.Msg.alert(
-	// 				'Error',
-	// 				'Unable to connect to server. Please try again later.',
-	// 			);
-	// 		}
-	// 	})
-	// }
+	onVerifyEmail: function () {
+		Ext.Msg.alert(
+			'Email verification',
+			'A verification link has been sent to your email address. Please check your inbox.',
+		);
+	},
+
+	beforeRender: function () {
+		var me = this;
+		var user = localStorage.getItem('CurrentUser');
+		Ext.Ajax.request({
+			url: 'cred.json',
+			method: 'POST',
+			jsonData: true,
+			setUseDefaultXhrHeader: false,
+			withCredentials: true,
+			params: {
+				username: user
+			},
+			scope: this,
+			success: function (response) {
+				var obj = Ext.decode(response.responseText);
+				for(var n = 0; n < obj.length; n++) {
+					if (obj[n].username == user) {
+						me.lookupReference('givenname').setValue(obj[n].name);
+						me.lookupReference('username').setValue(obj[n].username);
+						me.lookupReference('userpass').setValue(obj[n].password);
+						me.lookupReference('email').setValue(obj[n].email);
+						if (obj[n].verified == true){
+							me.lookupReference('verified').setValue("Yes");
+							me.lookupReference('verifiedButton').disable();
+							me.lookupReference('verifiedButton').setText('Account verified');
+						} else {
+							me.lookupReference('verified').setValue("No");
+						}
+						break;
+					}
+				}
+			},
+			failure: function () {
+				Ext.Msg.alert(
+					'Error',
+					'Unable to connect to server. Please try again later.',
+				);
+			}
+		})
+	}
 });

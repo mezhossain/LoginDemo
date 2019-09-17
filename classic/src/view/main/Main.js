@@ -82,28 +82,18 @@ Ext.define('LoginDemo.view.main.Main', {
     },
 
     items: [{
-        title: 'Users',
+        title: 'Users and Admins',
         iconCls: 'fa-users',
         items: [{
             xtype: 'mainlist'
-        }]
+        }],
+        layout: 'fit'
     }, {
         title: 'Create Users',
         iconCls: 'fa-user',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Groups',
-        iconCls: 'fa-users',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Settings',
-        iconCls: 'fa-cog',
-        bind: {
-            html: '{loremIpsum}'
-        }
+        items: [{
+            xtype: 'createform'
+        }],
+        layout: 'fit'
     }]
 });
