@@ -99,23 +99,23 @@ Ext.define('Ext.ux.LiveSearchGridPanel', {
 
         me.bbar = new Ext.ux.StatusBar({
             defaultText: me.defaultStatusText,
-            name: 'searchStatusBar'
-        },'->',{
-            xtype: 'button',
-            text: 'Delete user',
-            handler: 'deleteUser',
-            bind: {
-                disabled: '{!selectedJob}'
-            }   
-        },  {
-            xtype: 'button',
-            text: 'Update user',
-            handler: 'updateUser',
-            bind: {
-                disabled: '{!selectedJob}'
-            }   
+            name: 'searchStatusBar',
+            items:[{
+                xtype: 'button',
+                text: 'Delete user',
+                handler: 'deleteUser',
+                bind: {
+                    disabled: '{!selectedUser}'
+                }   
+            },  {
+                xtype: 'button',
+                text: 'Update user',
+                handler: 'updateUser',
+                bind: {
+                    disabled: '{!selectedUser}'
+                }  
+            }]
         });
-        
         me.callParent(arguments);
     },
     

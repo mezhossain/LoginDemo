@@ -38,7 +38,7 @@ Ext.define('LoginDemo.view.main.Main', {
             },
             flex: 0
         },
-        iconCls: 'fa-th-list',
+        iconCls: 'fa-user',
         items: [{
             xtype: 'button',
             text: 'Logout',
@@ -90,7 +90,7 @@ Ext.define('LoginDemo.view.main.Main', {
         layout: 'fit'
     }, {
         title: 'Create Users',
-        iconCls: 'fa-user',
+        glyph: 'f234',
         items: [{
             xtype: 'createform'
         }],

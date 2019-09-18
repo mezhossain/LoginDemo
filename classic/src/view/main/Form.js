@@ -34,7 +34,7 @@ Ext.define('LoginDemo.view.main.Form', {
     },  {
         xtype: 'textfield',
         fieldLabel: 'Email',
-        inputType: 'email',
+        vtype: 'email',
         name: 'email',
         reference: 'email',
         allowBlank: false

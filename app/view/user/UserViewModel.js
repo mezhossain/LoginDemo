@@ -1,7 +1,7 @@
-Ext.define('LoginDemo.view.main.MainModel', {
+Ext.define('LoginDemo.view.user.UserViewModel', {
     extend: 'Ext.app.ViewModel',
 
-    alias: 'viewmodel.main',
+    alias: 'viewmodel.user',
 
     data: {
         name: null,

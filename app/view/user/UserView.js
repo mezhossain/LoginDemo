@@ -6,12 +6,13 @@ Ext.define('LoginDemo.view.user.UserView', {
 		'Ext.plugin.Viewport',
 		'Ext.window.MessageBox',
 
-		'LoginDemo.view.main.MainController',
-		'LoginDemo.view.main.MainModel',
-		'LoginDemo.view.main.List',
+		'LoginDemo.view.user.UserController',
+		'LoginDemo.view.user.UserViewModel',
+		'LoginDemo.view.user.UserDetails',
 	],
 
-	controller: 'main',
+	controller: 'user',
+    viewModel: 'user',
 	plugins: 'viewport',
 
 	ui: 'navigation',
@@ -30,7 +31,7 @@ Ext.define('LoginDemo.view.user.UserView', {
 			},
 			flex: 0
 		},
-		iconCls: 'fa-th-list',
+		iconCls: 'fa-user',
 		items: [{
 			xtype: 'button',
 			text: 'Logout',
@@ -75,8 +76,7 @@ Ext.define('LoginDemo.view.user.UserView', {
 
 	items: [{
 		title: 'User Settings',
-		iconCls: 'fa-home',
-		// The following grid shares a store with the classic version's grid as well!
+		glyph: 'f013',
 		items: [{
 			xtype: 'userdetails'
 		}]

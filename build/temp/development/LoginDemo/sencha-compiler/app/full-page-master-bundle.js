@@ -1,2 +1,2 @@
 // @tag full-page
-// @require N:\extjs\logindemo\app.js
+// @require C:\GIT\LoginDemo\app.js

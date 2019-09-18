@@ -1,34 +1,42 @@
 Ext.define('LoginDemo.view.update.UpdateWindow', {
     extend: 'Ext.window.Window',
     title: 'Update User',
-    iconCls: 'x-fa fa-plus',
+    iconCls: 'x-fa fa-edit',
     layout: 'form',
     controller: 'main',
     items: [{
         xtype: 'form',
         width: 400,
         items:[{
+            xtype: 'displayfield',
+            fieldLabel: 'Username',
+            name: 'username',
+            reference: 'username',
+            labelStyle: 'font-weight:bold',
+            allowBlank: false
+        },  {
             xtype: 'textfield',
             fieldLabel: 'Name',
             name: 'name',
             reference: 'givenname',
-            allowBlank: false
-        },  {
-            xtype: 'textfield',
-            fieldLabel: 'Username',
-            name: 'username',
-            reference: 'username',
-            allowBlank: false
+            labelAlign: 'top',
+            allowBlank: false,
+            labelStyle: 'font-weight:bold',
+            width: '100%'
         },  {
             xtype: 'textfield',
             fieldLabel: 'Email',
-            inputType: 'email',
+            vtype: 'email',
             name: 'email',
             reference: 'email',
-            allowBlank: false
+            labelAlign: 'top',
+            allowBlank: false,
+            labelStyle: 'font-weight:bold',
+            width: '100%'
         },  {
             xtype: 'combo',
             fieldLabel: 'Account Level',
+            labelAlign: 'top',
             name: 'role',
             queryMode: 'local',
             valueField: 'role',
@@ -44,13 +52,17 @@ Ext.define('LoginDemo.view.update.UpdateWindow', {
                 }]
             },
             reference: 'role',
-            editable: false
+            editable: false,
+            labelStyle: 'font-weight:bold',
+            width: '100%'
         },  {
             xtype: 'displayfield',
-            fieldLabel: 'Account Verified',
+            fieldLabel: 'Verified',
+            labelAlign: 'left',
             name: 'verified',
             reference: 'verified',
-            editable: false
+            labelStyle: 'font-weight:bold',
+
         }],
     
         dockedItems: [{

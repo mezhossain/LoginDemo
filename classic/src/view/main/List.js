@@ -58,12 +58,4 @@ Ext.define('LoginDemo.view.main.List', {
             } 
         }
     ],
-
-    listeners: {
-        itemdblclick: 'onDoubleClick',
-    },
-    buttons: {
-        text: 'Delete User',
-        handler: 'deleteUser'
-    }
 });

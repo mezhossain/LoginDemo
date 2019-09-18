@@ -1,5 +1,5 @@
 $app-name:  dynamic( 'LoginDemo' );
-$image-search-path: 'N:/extjs/logindemo/build/development/LoginDemo/classic/resources';
+$image-search-path: 'C:/GIT/LoginDemo/build/development/LoginDemo/classic/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-ext-abstractcomponent: dynamic(true);;
 $include-ext-abstractcontainer: dynamic(true);;
@@ -1003,6 +1003,7 @@ $include-logindemo-view-update-updatewindow: dynamic(true);;
 $include-logindemo-view-user-usercontroller: dynamic(true);;
 $include-logindemo-view-user-userdetails: dynamic(true);;
 $include-logindemo-view-user-userview: dynamic(true);;
+$include-logindemo-view-user-userviewmodel: dynamic(true);;
 $output-paths: ("path": "../../classic/resources", "shared": "../../resources");
 
 /* ======================== ETC ======================== */

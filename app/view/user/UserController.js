@@ -2,6 +2,18 @@ Ext.define('LoginDemo.view.user.UserController', {
 	extend: 'Ext.app.ViewController',
 	alias: 'controller.user',
 
+	onLogout: function () {
+        localStorage.removeItem('LoggedInAdmin');
+        localStorage.removeItem('LoggedInUser');
+
+		localStorage.removeItem('CurrentUser');
+		
+        this.getView().destroy();
+        Ext.create({
+            xtype: 'login'
+        });
+    },
+
 	onPasswordReset: function () {
 		Ext.create({
 			xtype: 'resetpassword'
@@ -69,9 +81,14 @@ Ext.define('LoginDemo.view.user.UserController', {
 		);
 	},
 
+	onRequestEdit: function () {
+        Ext.Msg.alert('Edit details', 'Please contact your administrator to edit your personal details');
+    },
+
 	beforeRender: function () {
 		var me = this;
 		var user = localStorage.getItem('CurrentUser');
+		me.getViewModel().set('name', user);
 		Ext.Ajax.request({
 			url: 'cred.json',
 			method: 'POST',

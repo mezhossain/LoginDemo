@@ -53,5 +53,8 @@ Ext.define('LoginDemo.view.user.UserDetails', {
         reference: 'verifiedButton',
         text: 'Verify email address',
         handler: 'onVerifyEmail'
+    },  {
+        text: 'Request to edit details',
+        handler: 'onRequestEdit'
     }],
 });
