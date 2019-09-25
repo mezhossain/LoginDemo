@@ -31,6 +31,20 @@ Ext.define('LoginDemo.view.main.MainController', {
 		me.getViewModel().set('name', user);
     },
 
+    addUser: function() {
+        var me = this;
+        Ext.create('Ext.Window', {
+            extend: 'Ext.window.Window',
+            iconCls: 'x-fa fa-plus',
+            title: 'Create New User',
+            items:[{
+                xtype: 'userform',
+                width: 400,
+                height: 530
+            }]
+        }).show();
+    },
+
     onFormClear: function () {
         this.getView().getForm().reset();
     },
@@ -39,6 +53,7 @@ Ext.define('LoginDemo.view.main.MainController', {
         var me = this;
         var submit = me.getView().getForm().getValues();
         var store = Ext.data.StoreManager.lookup('users');
+        var win = Ext.WindowManager.getActive();
         store.insert(0, submit);
         store.load();
         Ext.Ajax.request({
@@ -55,7 +70,8 @@ Ext.define('LoginDemo.view.main.MainController', {
 			failure: function () {
 				Ext.Msg.alert('Error', "User was not added");
 			}
-		});
+        });
+        win.destroy();
     },
     
     deleteUser() {

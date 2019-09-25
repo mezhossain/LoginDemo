@@ -1,17 +1,16 @@
-Ext.define('LoginDemo.view.main.MainModel', {
+Ext.define('LoginDemo.view.group.GroupViewModel', {
     extend: 'Ext.app.ViewModel',
 
-    alias: 'viewmodel.main',
+    alias: 'viewmodel.group',
 
     data: {
-        name: null,
-        selectedUser: null
+        selectedGroup: null
     },
 
     stores: {
         Users: {
-            model: 'LoginDemo.model.User',
-            storeId: 'users',
+            model: 'LoginDemo.model.Group',
+            storeId: 'groups',
             autoLoad: true,
             pageSize: 0,
             remoteSort: false,
@@ -19,7 +18,7 @@ Ext.define('LoginDemo.view.main.MainModel', {
             autoSync: true,
             proxy : {
                 type : 'ajax',
-                url: 'cred.json',
+                url: 'group.json',
                 reader : {
                     type: 'json'
                 },
@@ -29,5 +28,4 @@ Ext.define('LoginDemo.view.main.MainModel', {
             } 
         }
     }
-
 });

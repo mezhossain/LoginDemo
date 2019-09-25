@@ -1,17 +1,16 @@
-Ext.define('LoginDemo.view.main.MainModel', {
+Ext.define('LoginDemo.view.role.RolesViewModel', {
     extend: 'Ext.app.ViewModel',
 
-    alias: 'viewmodel.main',
+    alias: 'viewmodel.roles',
 
     data: {
-        name: null,
-        selectedUser: null
+        selectedRole: null
     },
 
     stores: {
-        Users: {
-            model: 'LoginDemo.model.User',
-            storeId: 'users',
+        Roles: {
+            model: 'LoginDemo.model.Role',
+            storeId: 'roles',
             autoLoad: true,
             pageSize: 0,
             remoteSort: false,
@@ -19,7 +18,7 @@ Ext.define('LoginDemo.view.main.MainModel', {
             autoSync: true,
             proxy : {
                 type : 'ajax',
-                url: 'cred.json',
+                url: 'role.json',
                 reader : {
                     type: 'json'
                 },
@@ -29,5 +28,4 @@ Ext.define('LoginDemo.view.main.MainModel', {
             } 
         }
     }
-
 });

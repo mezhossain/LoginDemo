@@ -1,4 +1,4 @@
-Ext.define('LoginDemo.view.main.List', {
+Ext.define('LoginDemo.view.user.UserList', {
     extend: 'Ext.ux.LiveSearchGridPanel',
     
     requires: [
@@ -8,7 +8,7 @@ Ext.define('LoginDemo.view.main.List', {
         'Ext.ux.statusbar.StatusBar',
         'Ext.toolbar.Paging',
     ],
-    xtype: 'mainlist',
+    xtype: 'userlist',
 
     title: 'Users',
     controller: 'main',
@@ -16,6 +16,24 @@ Ext.define('LoginDemo.view.main.List', {
     bind: { store: '{Users}', selection: '{selectedUser}' },
     scrollable: true,
     reference: 'userlist',
+
+    beforeRender: function () {
+        var me = this;
+
+        var d = me.lookupReference('dButton');
+        d.setHandler('deleteUser');
+        d.setBind({
+            disabled: '{!selectedUser}'
+        });
+
+        var u = me.lookupReference('uButton');
+        u.setHandler('updateUser');
+        u.setBind({
+            disabled: '{!selectedUser}'
+        });
+
+        me.callParent(arguments);
+    },
 
     columns: [
         { 
@@ -29,7 +47,7 @@ Ext.define('LoginDemo.view.main.List', {
             editor: { allowBlank: false }, 
             sortable: true 
         },  { 
-            text: 'Account Level', 
+            text: 'Group', 
             dataIndex: 'role', 
             flex: 0.5, 
             editor: { allowBlank: false }, 

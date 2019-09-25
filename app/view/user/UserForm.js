@@ -1,8 +1,12 @@
 
-Ext.define('LoginDemo.view.main.Form', {
+Ext.define('LoginDemo.view.user.UserForm', {
     extend: 'Ext.form.Panel',
-    xtype: 'createform',
-    title: 'Create User',
+    requires: [
+        'LoginDemo.view.main.MainController',
+        'LoginDemo.view.main.MainModel',
+    ],
+    xtype: 'userform',
+    // title: 'Create User',
     controller: 'main',
     viewModel: 'main',
     bodyPadding: '20',
@@ -40,7 +44,7 @@ Ext.define('LoginDemo.view.main.Form', {
         allowBlank: false
     },  {
         xtype: 'combo',
-        fieldLabel: 'Account Level',
+        fieldLabel: 'Group',
         name: 'role',
         queryMode: 'local',
         valueField: 'role',

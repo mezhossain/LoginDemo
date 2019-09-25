@@ -52,7 +52,7 @@ Ext.define('Ext.ux.LiveSearchGridPanel', {
      */
     matchCls: 'x-livesearch-match',
     
-    defaultStatusText: 'Nothing Found',
+    defaultStatusText: 'Ready',
     
     // Component initialization override: adds the top and bottom toolbars and setup headers renderer.
     initComponent: function() {
@@ -82,6 +82,24 @@ Ext.define('Ext.ux.LiveSearchGridPanel', {
             tooltip: 'Find Next Row',
             handler: me.onNextClick,
             scope: me
+        },  {
+            xtype: 'button',
+            text: 'Clear',
+            tooltip: 'Clear Search',
+            handler: me.clearSearch,
+            scope: me
+        },  {
+            xtype: 'button',
+            text: 'Export to Excel',
+            tooltip: 'Export to Excel',
+            handler: me.exportToExcel,
+            scope: me
+        }, {
+            xtype: 'button',
+            text: 'Export to PDF',
+            tooltip: 'Export to PDF',
+            handler: me.exportToPDF,
+            scope: me
         }];
         // , '-', {
         //     xtype: 'checkbox',
@@ -99,21 +117,16 @@ Ext.define('Ext.ux.LiveSearchGridPanel', {
 
         me.bbar = new Ext.ux.StatusBar({
             defaultText: me.defaultStatusText,
+            shadow: true,
             name: 'searchStatusBar',
             items:[{
                 xtype: 'button',
-                text: 'Delete user',
-                handler: 'deleteUser',
-                bind: {
-                    disabled: '{!selectedUser}'
-                }   
+                reference: 'dButton',
+                text: 'Delete',
             },  {
                 xtype: 'button',
-                text: 'Update user',
-                handler: 'updateUser',
-                bind: {
-                    disabled: '{!selectedUser}'
-                }  
+                text: 'Update',
+                reference: 'uButton', 
             }]
         });
         me.callParent(arguments);
@@ -253,6 +266,10 @@ Ext.define('Ext.ux.LiveSearchGridPanel', {
          if (me.currentIndex === null) {
              me.getSelectionModel().deselectAll();
              me.textField.focus();
+             me.statusBar.setStatus({
+                text: 'Nothing found.',
+                iconCls: 'x-status-error'
+            });
          }
      },
     
@@ -304,6 +321,23 @@ Ext.define('Ext.ux.LiveSearchGridPanel', {
     regExpToggle: function(checkbox, checked) {
         this.regExpMode = checked;
         this.onTextFieldChange();
+    },
+
+    clearSearch: function () {
+        var me = this;
+        me.down('textfield[name=searchField]').setValue('');
+        me.statusBar.setStatus({
+            text: me.defaultStatusText,
+            iconCls: ''
+        });
+    },
+
+    exportToExcel: function () {
+        var me = this;
+    },
+
+    exportToPDF: function () {
+        var me = this;
     },
 
     privates: {

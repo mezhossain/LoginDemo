@@ -15,7 +15,7 @@ Ext.define('LoginDemo.view.main.Main', {
 
         'LoginDemo.view.main.MainController',
         'LoginDemo.view.main.MainModel',
-        'LoginDemo.view.main.List'
+        'LoginDemo.view.user.UserList'
     ],
 
     controller: 'main',
@@ -82,18 +82,37 @@ Ext.define('LoginDemo.view.main.Main', {
     },
 
     items: [{
-        title: 'Users and Admins',
+        title: 'Users Accounts',
         iconCls: 'fa-users',
         items: [{
-            xtype: 'mainlist'
+            xtype: 'userlist'
         }],
         layout: 'fit'
     }, {
-        title: 'Create Users',
+        title: 'User Groups',
         glyph: 'f234',
         items: [{
-            xtype: 'createform'
+            xtype: 'grouplist'
         }],
         layout: 'fit'
-    }]
+    }, {
+        title: 'Group Roles',
+        glyph: 'f234',
+        items: [{
+            xtype: 'roleslist'
+        }],
+        layout: 'fit'
+    }],
+    buttons: [{
+        text: 'Create New User',
+        listeners: {
+        	click: 'addUser'
+        }
+    },  {
+        text: 'Create New Group',
+        listeners: { 
+        	click: 'addGroup' 
+        }
+    }],
+    buttonAlign: 'center'
 });
