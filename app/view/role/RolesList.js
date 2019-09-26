@@ -13,7 +13,7 @@ Ext.define('LoginDemo.view.role.RolesList', {
     title: 'Group Roles',
     controller: 'roles',
     viewModel: { type: 'roles' },
-    bind: { store: '{Roles}', selection: '{selectedGroup}' },
+    bind: { store: '{Roles}', selection: '{selectedRole}' },
     scrollable: true,
     reference: 'roleslist',
 
@@ -34,7 +34,7 @@ Ext.define('LoginDemo.view.role.RolesList', {
     columns: [{ 
         text: 'Role Name', 
         dataIndex: 'role', 
-        flex: 1,
+        flex: 0.2,
         sortable: true
     },  { 
         text: 'Role Description', 

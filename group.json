@@ -1,0 +1,26 @@
+[
+    {
+        "group": "admin",
+        "description": "",
+        "roles": [
+            "TECH_ADMIN",
+            "HR_USER",
+            "SUPERVISOR"
+        ],
+        "users": [
+            "j.anderson"
+        ]
+    },
+    {
+        "group": "user",
+        "description": "",
+        "roles": [
+            "DEV_USER",
+            "TECH_TEST"
+        ],
+        "users": [
+            "spaul",
+            "bcranston"
+        ]
+    }
+]

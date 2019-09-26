@@ -1,38 +1,42 @@
 
-Ext.define('LoginDemo.view.group.GroupForm', {
-    extend: 'Ext.form.Panel',
-    xtype: 'groupform',
-    // title: 'Create User',
+Ext.define('LoginDemo.view.update.UpdateGroup', {
+    extend: 'Ext.window.Window',
+    iconCls: 'x-fa fa-edit',
+    xtype: 'updategroup',
+    title: 'Update Group',
     controller: 'group',
     viewModel: 'group',
+    modal: true,
     bodyPadding: '20',
-    fieldDefaults: {
-        msgTarget: 'side',
-        labelAlign: 'top',
-        labelStyle: 'font-weight:bold',
-        width: '100%'
-    },
-    items:[{
-        xtype: 'textfield',
-        fieldLabel: 'Group',
-        name: 'group',
-        reference: 'groupname',
-        allowBlank: false
-    },  {
-        xtype: 'textarea',
-        fieldLabel: 'Group description',
-        name: 'description',
-        reference: 'groupdesc',
-    },  {
-        xtype: 'tabpanel',
-        height: 300,
-        plain: true,
-        items: [{
-            layout: 'fit',
-            title: 'Users',
+    items: [{
+        xtype: 'form',
+        height: 500,
+        width: 1000,
+        fieldDefaults: {
+            msgTarget: 'side',
+            labelAlign: 'top',
+            labelStyle: 'font-weight:bold',
+            width: '100%'
+        },
+        items:[{
+            xtype: 'textfield',
+            fieldLabel: 'Group',
+            name: 'group',
+            reference: 'groupname',
+            allowBlank: false
+        },  {
+            xtype: 'textarea',
+            fieldLabel: 'Group description',
+            name: 'description',
+            reference: 'groupdesc',
+        },  {
+            xtype: 'tabpanel',
+            plain: true,
             items: [{
                 xtype: 'grid',
                 reference: 'userselect',
+                title: 'Users',
+                style: 'font-weight:bold',
                 selModel: {
                     selType: 'checkboxmodel'
                 },
@@ -64,13 +68,10 @@ Ext.define('LoginDemo.view.group.GroupForm', {
                         return Ext.String.format('<a href="mailto:{0}">{1}</a>', value, value);
                     } 
                 }]
-            }]
-        },  {
-            title: 'Roles',
-            layout: 'fit',
-            items: [{
+            },  {
                 xtype: 'grid',
                 reference: 'roleselect',
+                title: 'Roles',
                 selModel: {
                     selType: 'checkboxmodel',
                     mode: 'MULTI'
@@ -82,16 +83,18 @@ Ext.define('LoginDemo.view.group.GroupForm', {
                 columns: [{ 
                     text: 'Role Name', 
                     dataIndex: 'role', 
-                    flex: 0.2,
+                    flex: 1,
                     sortable: true
                 },  { 
                     text: 'Role Description', 
                     dataIndex: 'description', 
                     flex: 1, 
                     sortable: true 
-                }]
-            }]
+                }],
+            }],
         }],
+
+
     }],
     buttonAlign: 'center',
     buttons: [{
@@ -100,7 +103,7 @@ Ext.define('LoginDemo.view.group.GroupForm', {
     },  {
         reference: 'verifiedButton',
         text: 'Done',
-        handler: 'onGroupSubmit',
+        handler: 'onUpdate',
         formBind: true,
     }],
 });

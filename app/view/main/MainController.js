@@ -13,7 +13,6 @@ Ext.define('LoginDemo.view.main.MainController', {
         // Remove the localStorage key/value
         localStorage.removeItem('LoggedInAdmin');
         localStorage.removeItem('LoggedInUser');
-
         localStorage.removeItem('CurrentUser');
 
         // Remove Main View
@@ -37,6 +36,7 @@ Ext.define('LoginDemo.view.main.MainController', {
             extend: 'Ext.window.Window',
             iconCls: 'x-fa fa-plus',
             title: 'Create New User',
+            modal: true,
             items:[{
                 xtype: 'userform',
                 width: 400,
@@ -75,7 +75,7 @@ Ext.define('LoginDemo.view.main.MainController', {
     },
     
     deleteUser() {
-		Ext.Msg.confirm('Delete Confirm', 'Are you sure you want to delete this job?', this.onDeleteUserConfirm, this);
+		Ext.Msg.confirm('Delete Confirm', 'Are you sure you want to delete this user?', this.onDeleteUserConfirm, this);
 	},
 
 	onDeleteUserConfirm(choice) {
@@ -95,10 +95,10 @@ Ext.define('LoginDemo.view.main.MainController', {
 						jsonData: Ext.util.JSON.encode(deleteRecord.data),
 						success: function (response) {
                             var json = Ext.decode(response.responseText);
-                            Ext.Msg.alert('User Deleted', "Job was successfully deleted");
+                            Ext.Msg.alert('User Deleted', "User was successfully deleted");
 						},
 						failure: function () {
-							Ext.Msg.alert('Error', "Job was not deleted");
+							Ext.Msg.alert('Error', "User was not deleted");
 						},
 					});
 				}
@@ -109,7 +109,7 @@ Ext.define('LoginDemo.view.main.MainController', {
     updateUser() {
         var me = this;
         const selectedUser = me.getViewModel().get('selectedUser');
-        var win = Ext.create('LoginDemo.view.update.UpdateWindow');
+        var win = Ext.create('LoginDemo.view.update.UpdateUser');
         win.lookupReference('username').setValue(selectedUser.data.username);
         win.lookupReference('givenname').setValue(selectedUser.data.name);
 		win.lookupReference('email').setValue(selectedUser.data.email);
@@ -166,4 +166,19 @@ Ext.define('LoginDemo.view.main.MainController', {
 		}
     },
 
+    addGroup: function() {
+        var me = this;
+        Ext.create('Ext.Window', {
+            extend: 'Ext.window.Window',
+            iconCls: 'x-fa fa-plus',
+            title: 'Create New Group',
+            modal: true,
+            items:[{
+                xtype: 'groupform',
+                width: 1000,
+                height: 530
+            }],
+            layout: 'fit'
+        }).show();
+    }, 
 });

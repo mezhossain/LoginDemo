@@ -1,0 +1,47 @@
+[
+    {
+        "role": "READ_ONLY",
+        "description": ""
+    },
+    {
+        "role": "SYSTEM",
+        "description": ""
+    },
+    {
+        "role": "TECH_ADMIN",
+        "description": ""
+    },
+    {
+        "role": "TECH_TEST",
+        "description": ""
+    },
+    {
+        "role": "HR_USER",
+        "description": ""
+    },
+    {
+        "role": "HR_ADMIN",
+        "description": ""
+    },
+    {
+        "role": "SUPERVISOR",
+        "description": ""
+    },
+    {
+        "role": "ACCOUNTS_USER",
+        "description": ""
+    },
+    {
+        "role": "ACCOUNTS_ADMIN",
+        "description": ""
+    },
+    {
+        "role": "DEV_USER",
+        "description": ""
+    },
+    {
+        "role": "DEV_ADMIN",
+        "description": ""
+    },
+
+]

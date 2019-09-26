@@ -8,7 +8,7 @@ Ext.define('LoginDemo.view.group.GroupViewModel', {
     },
 
     stores: {
-        Users: {
+        Groups: {
             model: 'LoginDemo.model.Group',
             storeId: 'groups',
             autoLoad: true,

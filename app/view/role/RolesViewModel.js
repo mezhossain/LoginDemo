@@ -12,7 +12,7 @@ Ext.define('LoginDemo.view.role.RolesViewModel', {
             model: 'LoginDemo.model.Role',
             storeId: 'roles',
             autoLoad: true,
-            pageSize: 0,
+            pageSize: 5,
             remoteSort: false,
             remoteFilter: false,
             autoSync: true,

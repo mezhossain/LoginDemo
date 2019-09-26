@@ -44,7 +44,7 @@ Ext.define('LoginDemo.view.main.Main', {
             text: 'Logout',
             margin: '10 0',
             handler: 'onLogout'
-        }]
+        }],
     },
 
     tabBar: {
@@ -83,23 +83,30 @@ Ext.define('LoginDemo.view.main.Main', {
 
     items: [{
         title: 'Users Accounts',
-        iconCls: 'fa-users',
+        iconCls: 'fa-user',
         items: [{
             xtype: 'userlist'
         }],
         layout: 'fit'
     }, {
         title: 'User Groups',
-        glyph: 'f234',
+        iconCls: 'fa-users',
         items: [{
             xtype: 'grouplist'
         }],
         layout: 'fit'
     }, {
         title: 'Group Roles',
-        glyph: 'f234',
+        glyph: 'f1b3',
         items: [{
             xtype: 'roleslist'
+        }],
+        layout: 'fit'
+    }, {
+		title: 'Profile',
+		glyph: 'f013',
+		items: [{
+			xtype: 'admindetails'
         }],
         layout: 'fit'
     }],

@@ -39,32 +39,22 @@ Ext.define('LoginDemo.view.group.GroupList', {
         { 
             text: 'Group Name', 
             dataIndex: 'group', 
-            flex: 1
+            flex: 0.3
         },  { 
             text: 'Group Description', 
             dataIndex: 'username', 
             flex: 1, 
-            editor: { allowBlank: false }, 
             sortable: true 
         },  { 
             text: 'Last Modified', 
             dataIndex: 'modifiedDate', 
             vtype: 'date',
-            flex: 1, 
-            editor: { allowBlank: false }, 
+            flex: 0.3, 
             sortable: true,
         },  { 
             text: 'Modified By', 
             dataIndex: 'modifiedBy', 
-            editor: { allowBlank: false }, 
-            sortable: true,
-            renderer: function (value) {
-                if (value == true) {
-                    return "Yes";
-                } else {
-                    return "No";
-                }
-            } 
+            sortable: true
         }
     ],
 });

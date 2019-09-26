@@ -1,9 +1,10 @@
-Ext.define('LoginDemo.view.update.UpdateWindow', {
+Ext.define('LoginDemo.view.update.UpdateUser', {
     extend: 'Ext.window.Window',
     title: 'Update User',
     iconCls: 'x-fa fa-edit',
     layout: 'form',
     controller: 'main',
+    modal: true,
     items: [{
         xtype: 'form',
         width: 400,
