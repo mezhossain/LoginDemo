@@ -19,5 +19,6 @@ Ext.define('LoginDemo.model.Group', {
 	}, {  
         name: 'modifiedBy',
         type: 'string' 
-	}],
+    }],
+    hasMany: [ 'User', 'Role' ]
 })

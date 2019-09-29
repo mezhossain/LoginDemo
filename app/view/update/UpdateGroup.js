@@ -31,6 +31,7 @@ Ext.define('LoginDemo.view.update.UpdateGroup', {
             reference: 'groupdesc',
         },  {
             xtype: 'tabpanel',
+            height: 300,
             plain: true,
             items: [{
                 xtype: 'grid',
@@ -83,7 +84,7 @@ Ext.define('LoginDemo.view.update.UpdateGroup', {
                 columns: [{ 
                     text: 'Role Name', 
                     dataIndex: 'role', 
-                    flex: 1,
+                    flex: 0.2,
                     sortable: true
                 },  { 
                     text: 'Role Description', 
@@ -103,7 +104,7 @@ Ext.define('LoginDemo.view.update.UpdateGroup', {
     },  {
         reference: 'verifiedButton',
         text: 'Done',
-        handler: 'onUpdate',
+        handler: 'onGroupUpdate',
         formBind: true,
     }],
 });

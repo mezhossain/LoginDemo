@@ -40,33 +40,56 @@ Ext.define('LoginDemo.view.group.GroupController', {
     updateGroup() {
         var me = this;
         const selectedGroup = me.getViewModel().get('selectedGroup');
-        var win = Ext.create({
-            xtype: 'updategroup'
-        });
-        // win.lookupReference('username').setValue(selectedUser.data.username);
-        // win.lookupReference('givenname').setValue(selectedUser.data.name);
-		// win.lookupReference('email').setValue(selectedUser.data.email);
-        // win.lookupReference('role').setValue(selectedUser.data.role);
-        // if (selectedUser.data.verified == true){
-        //     win.lookupReference('verified').setValue("Yes");
-        // } else {
-        //     win.lookupReference('verified').setValue("No");
-        // }
+        var record = me.getStore('Groups').findRecord('group', selectedGroup.data.group);
+        console.log(record);
+        var win = Ext.create('LoginDemo.view.update.UpdateGroup');
+        win.lookupReference('groupname').setValue(selectedGroup.data.group);
+        win.lookupReference('groupdesc').setValue(selectedGroup.data.description);
         win.show();
     },
 
     onGroupSubmit: function () {
         var me = this;
-        var group = me.lookupReference("groupname");
-        console.log(group);
-        var desc = me.lookupReference("groupdesc");
+        var group = me.lookupReference("groupname").getValue();
+        var desc = me.lookupReference("groupdesc").getValue();
         var userarray , rolearray;
-        userarray = me.lookupReference("userselect").getSelectionModel().getSelected();
-        console.log(userarray);
-
-        rolearray = me.lookupReference("roleselect").getSelectionModel().getSelected();
-        console.log(rolearray);
-    },
+        var userconst = me.lookupReference("userselect").getSelectionModel().getSelected();
+        var userarray = [];
+        for (var n = 0; n < userconst.items.length; n++) {
+            userarray.push(userconst.items[n].data.username);
+        }
+        var roleconst = me.lookupReference("roleselect").getSelectionModel().getSelected();
+        var rolearray = [];
+        for (var n = 0; n < roleconst.items.length; n++) {
+            rolearray.push(roleconst.items[n].data.role);
+        }       
+        var groupobj = {
+            group: group,
+            description: desc,
+            roles: rolearray,
+            users: userarray
+        }
+        var store = Ext.data.StoreManager.lookup('users');
+        store.insert(0, groupobj);
+        store.load();
+        Ext.Ajax.request({
+			url: 'group.json',
+			method: 'PUT',
+			jsonData: Ext.util.JSON.encode(groupobj),
+			headers:
+			{
+				'Content-Type': 'application/json'
+			},
+			success: function (response) {
+                Ext.Msg.alert('Success', "Group was successfully added to the database");
+			},
+			failure: function () {
+				Ext.Msg.alert('Error', "Group was not added");
+			}
+        });
+        var win = Ext.WindowManager.getActive();
+        win.destroy();
+    }, 
 
     onGroupClear: function () {
         var me = this;
@@ -74,5 +97,53 @@ Ext.define('LoginDemo.view.group.GroupController', {
         var desc = me.lookupReference("groupdesc").reset();
         userarray = me.lookupReference("userselect").getSelectionModel().deselectAll();
         rolearray = me.lookupReference("roleselect").getSelectionModel().deselectAll();
+    },
+
+    onGroupUpdate: function () {
+        var me = this;
+        var group = me.lookupReference("groupname").getValue();
+        var desc = me.lookupReference("groupdesc").getValue();
+        var userarray , rolearray;
+        var userconst = me.lookupReference("userselect").getSelectionModel().getSelected();
+        var userarray = [];
+        for (var n = 0; n < userconst.items.length; n++) {
+            userarray.push(userconst.items[n].data.username);
+        }
+        var roleconst = me.lookupReference("roleselect").getSelectionModel().getSelected();
+        var rolearray = [];
+        for (var n = 0; n < roleconst.items.length; n++) {
+            rolearray.push(roleconst.items[n].data.role);
+        }
+        var store = Ext.data.StoreManager.lookup('groups');
+        var updateRecord = store.findRecord('group', group);
+        updateRecord.set('group', group);
+        updateRecord.set('description', desc);
+        updateRecord.set('roles', rolesarray);
+        updateRecord.set('users', userarray);
+        store.load();
+        var groupobj = {
+            group: group,
+            description: desc,
+            roles: rolearray,
+            users: userarray
+        }
+        console.log(groupobj);
+        Ext.Ajax.request({
+			url: 'group.json',
+			method: 'PUT',
+			jsonData: Ext.util.JSON.encode(groupobj),
+			headers:
+			{
+				'Content-Type': 'application/json'
+			},
+			success: function (response) {
+                Ext.Msg.alert('Success', "Group was successfully added to the database");
+			},
+			failure: function () {
+				Ext.Msg.alert('Error', "Group was not added");
+			}
+        });
+        var win = Ext.WindowManager.getActive();
+        win.destroy();
     }
 });

@@ -20,5 +20,6 @@ Ext.define('LoginDemo.model.User', {
         name: 'verified',
 		type: 'boolean' ,
 		defaultValue: false 
-	}],
+    }],
+    belongsTo: 'Group'
 })
