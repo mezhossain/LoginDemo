@@ -991,7 +991,6 @@ $include-logindemo-application: dynamic(true);;
 $include-logindemo-model-group: dynamic(true);;
 $include-logindemo-model-role: dynamic(true);;
 $include-logindemo-model-user: dynamic(true);;
-$include-logindemo-store-personnel: dynamic(true);;
 $include-logindemo-view-group-groupcontroller: dynamic(true);;
 $include-logindemo-view-group-groupform: dynamic(true);;
 $include-logindemo-view-group-grouplist: dynamic(true);;

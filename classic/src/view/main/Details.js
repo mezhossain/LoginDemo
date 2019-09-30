@@ -4,8 +4,8 @@ Ext.define('LoginDemo.view.main.Details', {
     height: '100%',
     scrollable: true,
     title: 'Profile',
-    controller: 'main',
-    viewModel: 'main',
+    controller: 'user',
+    viewModel: 'user',
     bodyPadding: '20',
     fieldDefaults: {
         msgTarget: 'side',
@@ -57,8 +57,6 @@ Ext.define('LoginDemo.view.main.Details', {
     },  {
         text: 'Save details',
         handler: 'onSave'
-    },  {
-        text: 'Reset to previous details',
-        handler: 'onResetDetails'
     }],
+
 });

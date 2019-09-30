@@ -27,7 +27,7 @@ Ext.define('LoginDemo.view.main.MainController', {
     beforeRender: function () {
 		var me = this;
 		var user = localStorage.getItem('CurrentUser');
-		me.getViewModel().set('name', user);
+        me.getViewModel().set('name', user);
     },
 
     addUser: function() {
@@ -126,6 +126,7 @@ Ext.define('LoginDemo.view.main.MainController', {
         var win = Ext.WindowManager.getActive();
     	var name= win.lookupReference('givenname').getValue();
         var user = win.lookupReference('username').getValue();
+        var user = win.down('displayfield').getValue();
         var email = win.lookupReference('email').getValue();
         var role = win.lookupReference('role').getValue();
         var verified = win.lookupReference('verified').getValue();
@@ -155,10 +156,10 @@ Ext.define('LoginDemo.view.main.MainController', {
             },
             success: function (response) {
                 var obj = Ext.decode(response.responseText);
-                Ext.Msg.alert('Update Successful', "Job was successfully updated");
+                Ext.Msg.alert('Update Successful', "User was successfully updated");
             },
             failure: function () {
-                Ext.Msg.alert('Error', "Job was not updated");
+                Ext.Msg.alert('Error', "User was not updated");
             }
         });
 		if (win) {
@@ -180,5 +181,65 @@ Ext.define('LoginDemo.view.main.MainController', {
             }],
             layout: 'fit'
         }).show();
-    }, 
+    },
+
+    onPasswordReset: function () {
+		Ext.create({
+			xtype: 'resetpassword'
+		}).show();
+	},
+
+	onPasswordConfirm: function () {
+		var win = Ext.WindowManager.getActive();
+		var currentpass = win.lookupReference('currentpass').getValue();
+		console.log(currentpass);
+		var pass1 = win.lookupReference('password1').getValue();
+		console.log(pass1);
+		var pass2 = win.lookupReference('password2').getValue();
+		console.log(pass2);
+		Ext.Ajax.request({
+			url: 'cred.json',
+			method: 'POST',
+			jsonData: true,
+			setUseDefaultXhrHeader: false,
+			withCredentials: true,
+			params: {
+				password: currentpass
+			},
+			scope: this,
+			success: function (response) {
+				var obj = Ext.decode(response.responseText);
+				for(var n = 0; n < obj.length; n++) {
+					if (obj[n].password == currentpass) {
+						if (pass1 == pass2) {
+							obj[n].password = pass2;
+							console.log(obj[n]);
+							win.destroy();
+							Ext.Msg.alert(
+								"Password Reset",
+								"Your password has been succesfully reset.",
+							);
+						} else {
+							Ext.Msg.alert(
+								"Error",
+								"Passwords do not match. Please try again",
+							);
+						}
+						break;
+					} else {
+						Ext.Msg.alert(
+							'Error',
+							'The current password you provided was incorrect. Please try again.',
+						);
+					}
+				}
+			},
+			failure: function () {
+				Ext.Msg.alert(
+					'Error',
+					'Unable to connect to server. Please try again later.',
+				);
+			}
+		})
+	},
 });

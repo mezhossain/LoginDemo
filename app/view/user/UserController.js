@@ -83,7 +83,39 @@ Ext.define('LoginDemo.view.user.UserController', {
 
 	onRequestEdit: function () {
         Ext.Msg.alert('Edit details', 'Please contact your administrator to edit your personal details');
-    },
+	},
+	
+	onSave: function () {
+		var me = this;
+		var user = localStorage.getItem('CurrentUser');
+		var name= me.lookupReference('givenname').getValue();
+        var email = me.lookupReference('email').getValue();
+        var store = Ext.data.StoreManager.lookup('users');
+        var updateRecord = store.findRecord('username', user);
+        var updateEmail = updateRecord.set('email', email);
+        var updateName = updateRecord.set('name', name);
+        store.load();
+        Ext.Ajax.request({
+            url: 'cred.json',
+            method: 'PUT',
+            jsonData: true,
+			setUseDefaultXhrHeader: false,
+			withCredentials: true,
+			params: {
+				username: user,
+				email: updateEmail,
+				name: updateName
+			},
+			scope: this,
+            success: function (response) {
+                var obj = Ext.decode(response.responseText);
+                Ext.Msg.alert('Update Successful', "User was successfully updated");
+            },
+            failure: function () {
+                Ext.Msg.alert('Error', "User was not updated");
+            }
+        });
+	},
 
 	beforeRender: function () {
 		var me = this;

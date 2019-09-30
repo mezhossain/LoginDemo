@@ -118,7 +118,7 @@ Ext.define('LoginDemo.view.group.GroupController', {
         var updateRecord = store.findRecord('group', group);
         updateRecord.set('group', group);
         updateRecord.set('description', desc);
-        updateRecord.set('roles', rolesarray);
+        updateRecord.set('roles', rolearray);
         updateRecord.set('users', userarray);
         store.load();
         var groupobj = {
@@ -137,10 +137,10 @@ Ext.define('LoginDemo.view.group.GroupController', {
 				'Content-Type': 'application/json'
 			},
 			success: function (response) {
-                Ext.Msg.alert('Success', "Group was successfully added to the database");
+                Ext.Msg.alert('Success', "Group was successfully updated to the database");
 			},
 			failure: function () {
-				Ext.Msg.alert('Error', "Group was not added");
+				Ext.Msg.alert('Error', "Group was not updated");
 			}
         });
         var win = Ext.WindowManager.getActive();
